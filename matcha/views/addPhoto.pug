@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .column.is-half.is-offset-one-quarter
+    //- pre= h.dump(currentUser._id)
+    form(action='/edit/photos' enctype="multipart/form-data" method="POST")
+      .field
+        each i in [0, 1, 2, 3, 4]
+          .box
+            label.label(for="photo") Picture #{i + 1}
+            input.input.is-primary(type="file" name=`photo-${i + 1}` accept="image/*")
+            if currentUser.photos
+              if currentUser.photos[i]
+                .card-image
+                  figure.image
+                    img(src=`/user/${currentUser._id}/${currentUser.photos[i]}`)
+      .field
+        input.button.is-primary(type="submit" value="Add new picture")

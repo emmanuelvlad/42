@@ -1,0 +1,87 @@
+extends layout
+
+block content
+  form(action='/edit' method="POST")
+    .column.is-half.is-offset-one-quarter
+      h1.title.is-3 Edit Profile
+      .field
+        label.label(for="f-name") Firstname
+        p.control.has-icons-left.has-icons-right
+          input.input(type="name" name="firstname" value=currentUser.firstname)
+          span.icon.is-small.is-left
+            i.fa.fa-id-badge
+          span.icon.is-small.is-right
+      .field
+        label.label(for="l-name") Lastname
+        p.control.has-icons-left.has-icons-right
+          input.input(type="name" name="lastname" value=currentUser.lastname)
+          span.icon.is-small.is-left
+            i.fa.fa-id-badge
+          span.icon.is-small.is-right
+      .field
+        label.label(for="birthday") Birthday
+        p.control.has-icons-left
+          input.input(type="date" name="birthday" value=currentUser.birthday)
+          span.icon.is-small.is-left
+            i.fa.fa-birthday-cake
+      .field
+        label.label(for="email") Email address
+        p.control.has-icons-left.has-icons-right
+          input.input(type="email" name="email" value=currentUser.email)
+          span.icon.is-small.is-left
+            i.fa.fa-envelope
+          span.icon.is-small.is-right
+      .field
+        label.label(for="sex") Your sex
+        .control
+          .select
+            select(name="sex")
+              if (currentUser.sex == "man")
+                option(selected) man
+                option woman
+              else if (currentUser.sex == "woman")
+                option man
+                option(selected) woman
+              else
+                option man
+                option woman
+      .field
+        label.label(for="sexWanted") Looking for
+        .control
+          .select
+            select(name="sexWanted")
+              if (currentUser.sexWanted == "men")
+                option(selected) men
+                option women
+                option both
+              else if (currentUser.sexWanted == "women")
+                option men
+                option(selected) women
+                option both
+              else
+                option women
+                option men
+                option(selected) both
+      .field
+        label.label(for="address") Address
+        p.control.has-icons-left
+          input.input#addr(type="text" name="location[address]" value=(currentUser.location && currentUser.location.address))
+          span.icon.is-small.is-left
+            i.fa.fa-map-marker
+      .field
+        label.label(for="bio") Add your Bio
+          .control
+            textarea.textarea(name="bio" placeholder="Who are you ?")= currentUser.bio
+      if tags
+        .field
+          .control
+            each tag in tags
+              input(type="checkbox" name="tags" value=`#${tag.name}` checked=userTags.includes(tag.name))
+              label.checkbox(name="tag")= `#${tag.name}`
+              | &nbsp;
+      .field
+        input.button.is-primary(type="submit" value="edit")
+
+block scripts
+  script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_KEY}&language=en&libraries=places`)
+  script(src='/javascript/autocomplete.js')

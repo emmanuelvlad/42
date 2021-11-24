@@ -1,0 +1,31 @@
+extends layout
+
+block content
+	.columns.is-centered
+		.column.is-8
+			#content.chat
+				table.table(style="margin:0; width: 100%")
+					thead
+						tr
+							th Sender
+							th Message
+					tbody#zoneChat
+						if link.chat
+							each message in link.chat
+								tr
+									if message.user === currentUser.username
+										td
+											strong You
+									else
+										td
+											strong #{message.user}
+									td #{message.message}
+			//- form.form(action="")
+			.columns
+				.column.is-four-fifths
+					input.input.is-info#messageInput
+				.column.is-one-quarter
+					button.button.is-info#messageSend Send
+
+block scripts
+	script(src='/javascript/chat.js')

@@ -1,0 +1,22 @@
+mixin loginForm()
+  .column.is-half.is-offset-one-quarter
+    form.form(action="/login" method="POST")
+      h1.title.is-3 Login
+      .field
+        label.label(for="username") Username
+        p.control.has-icons-left.has-icons-right
+          input.input(type="username" name="username")
+          span.icon.is-small.is-left
+            i.fa.fa-envelope
+          span.icon.is-small.is-right
+      .field
+        label.label(for="password") Password
+        p.control.has-icons-left.has-icons-right
+          input.input(type="password" name="password")
+          span.icon.is-small.is-left
+            i.fa.fa-key
+          span.icon.is-small.is-right
+      .field.is-grouped.is-grouped-centered
+        input.button.is-primary(type="submit" value="Log In")
+      .field.is-grouped.is-grouped-centered
+        a.button.is-active(href='/askfornew') Forgot your password

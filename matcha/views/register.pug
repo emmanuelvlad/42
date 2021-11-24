@@ -1,0 +1,66 @@
+extends layout
+
+block content
+  form(action="/register" method="POST")
+    .column.is-half.is-offset-one-quarter
+      h1.title.is-3 Register
+      .field
+        label.label(for="u-name") Username
+        p.control.has-icons-left.has-icons-right
+          input.input(type="name" name="username")
+          span.icon.is-small.is-left
+            i.fa.fa-user
+          span.icon.is-small.is-right
+      .field
+        label.label(for="f-name") Firstname
+        p.control.has-icons-left.has-icons-right
+          input.input(type="name" name="firstname")
+          span.icon.is-small.is-left
+            i.fa.fa-id-badge
+          span.icon.is-small.is-right
+      .field
+        label.label(for="l-name") Lastname
+        p.control.has-icons-left.has-icons-right
+          input.input(type="name" name="lastname")
+          span.icon.is-small.is-left
+            i.fa.fa-id-badge
+          span.icon.is-small.is-right
+      .field
+        label.label(for="adress") Adress
+        p.control.has-icons-left
+          input.input#addr(type="text" name="location[address]")
+          span.icon.is-small.is-left
+            i.fa.fa-map-marker
+      .field
+        label.label Birthday
+        p.control.has-icons-left
+          input.input(type="date" name="birthday")
+          span.icon.is-small.is-left
+            i.fa.fa-birthday-cake
+      .field
+        label.label(for="email") Email address
+        p.control.has-icons-left.has-icons-right
+          input.input(type="email" name="email")
+          span.icon.is-small.is-left
+            i.fa.fa-envelope
+          span.icon.is-small.is-right
+      .field
+        label.label(for="password") Password
+        p.control.has-icons-left.has-icons-right
+          input.input(type="password" name="password")
+          span.icon.is-small.is-left
+            i.fa.fa-key
+          span.icon.is-small.is-right
+      .field
+        label.label(for="password") Repeat password
+        p.control.has-icons-left.has-icons-right
+          input.input(type="password" name="repeatPassword")
+          span.icon.is-small.is-left
+            i.fa.fa-key
+          span.icon.is-small.is-right
+      .field
+        input.button.is-primary(type="submit" value="Register")
+
+block scripts
+  script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_KEY}&language=en&libraries=places`)
+  script(src='/javascript/autocomplete.js')

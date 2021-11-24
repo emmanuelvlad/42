@@ -1,0 +1,109 @@
+extends layout
+
+block content
+  //- pre= h.dump(user)
+  //- pre= h.dump(currentUser)
+
+  if user
+    section#profile-banner.hero.is-dark
+      if user.photos
+        .background-image-blur(style=`background-image: url(/user/${user._id}/${user.photos[0]})`)
+      else
+        .background-image-blur(style=`background-image: url(http://bulma.io/images/placeholders/480x480.png)`)
+      .container.swiper-container
+        .swiper-wrapper
+          if user.photos
+            each photo in user.photos
+              .swiper-slide
+                img(src=`/user/${user._id}/${photo}` alt="image")
+          else
+            .swiper-slide
+              img(src=`http://bulma.io/images/placeholders/480x480.png` alt="image")
+        .swiper-pagination
+        .swiper-button-prev
+        .swiper-button-next
+    section#profile-info
+      if `${user._id}` != `${currentUser._id}`
+        .columns.is-centered(style="position: relative;")
+          .column.is-half.btn-container
+            if block
+              button#block.button.profile-btn.small.block-btn.is-danger
+                i.fa.fa-ban
+            else
+              button#block.button.profile-btn.small.block-btn
+                i.fa.fa-ban
+            if like
+              button#like.button.profile-btn.like-btn.is-success
+                i.fa.fa-heart.animated.bounceIn.infinite
+            else
+              button#like.button.profile-btn.like-btn
+                i.fa.fa-heart.animated.infinite
+            button#report.button.profile-btn.small.block-btn.is-warning
+              i.fa.fa-flag
+      .columns.is-centered
+        .column.is-half-desktop
+          h1.title(style="margin-top: 2.5rem") #{user.username}, #{age} 
+            if user.sex == "man"
+              i.fa.fa-mars(alt="man" style="color: blue")
+            else if user.sex == "woman"
+              i.fa.fa-venus(alt="woman" style="color: pink")
+            else
+              i.fa.fa-question
+            if like && user2_like
+              p.is-pulled-right.is-size-5.has-text-weight-normal It's a match!
+            else if user2_like
+              p.is-pulled-right.is-size-5.has-text-weight-normal Likes you!
+          h2.subtitle #{user.firstname} #{user.lastname}, 
+            span.is-size-6.has-text-weight-light #{orientation}
+            if user.status === "Online"
+              p#online.is-pulled-right.is-size-5.has-text-weight-normal.has-text-success Online 
+                i.fa.fa-circle.is-size-7
+            else
+              p#online.is-pulled-right.is-size-6.has-text-weight-normal.has-text-danger(title=`${global.timeAgo(user.last_visit)}`) Offline 
+                i.fa.fa-circle.is-size-7
+          h3.is-size-6.has-text-weight-light #{distance}km
+          div
+            p.is-size-5.has-text-weight-semibold About
+            p(style="margin-bottom: 0.5em") #{user.bio}
+            .tags(style="margin-bottom: 1.5em")
+              if tags
+                each tag in tags
+                  span.tag.is-danger #{tag}
+              else
+                span lol
+          p.is-size-5.has-text-weight-semibold Popularity
+          div(style="position:relative")
+            progress.progress.is-danger.is-large(value=user.popularity max=maxPopularity) #{user.popularity}
+            span(style="position: absolute; top: 0; right: 0; left: 0; color: #fff; text-align: center;") #{user.popularity} / #{maxPopularity}
+          if user.username == currentUser.username
+            if links.like
+              div
+                p.is-size-5.has-text-weight-semibold People who likes you
+                .columns
+                  each user in links.all
+                    if user.photos && user.photos[0] && user.like
+                      .column.is-6-mobile.is-4-tablet.is-3-desktop
+                        .user-icon
+                          a(href=`/profile/${user.username}`)
+                            .user-hover
+                              span.is-size-4 #{user.username}
+                            .user-img(style=`background-image: url(/user/${user._id}/${user.photos[0]});`)
+            if links.visit
+              div
+                p.is-size-5.has-text-weight-semibold People who visited your profile
+                .columns.is-multiline.is-flex
+                  each user in links.all
+                    if user.photos && user.photos[0] && user.last_visit
+                      .column.is-6-mobile.is-4-tablet.is-3-desktop
+                        .user-icon
+                          a(href=`/profile/${user.username}`)
+                            .user-hover
+                              span.is-size-4 #{user.username}
+                            .user-img(style=`background-image: url(/user/${user._id}/${user.photos[0]});`)
+
+        //-     each user in likes
+
+
+block scripts
+  script(src='/javascript/interactAPI.js')
+

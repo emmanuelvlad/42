@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .columns.is-centered(style="margin-top: 2em;")
+    .column.is-half-desktop
+      //- pre= h.dump(users)
+      .columns.is-multiline.is-flex
+        each user in users
+          if user.photos && user.photos[0]
+            .column.is-6-mobile.is-4-tablet.is-3-desktop
+              .user-icon
+                a(href=`/profile/${user.username.toLowerCase()}`)
+                  .user-hover
+                    span.is-size-4 #{user.username}
+                  .user-img(style=`background-image: url(/user/${user._id}/${user.photos[0]});`)

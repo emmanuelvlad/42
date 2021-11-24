@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .column.is-half.is-offset-one-quarter
+    form(method="POST")
+      .field
+        label.label(for="password") password
+        p.control.has-icons-left.has-icons-right
+          input.input(type="password" name="password")
+          span.icon.is-small.is-left
+            i.fa.fa-key
+          span.icon.is-small.is-right
+      .field
+        label.label(for="password-confirm") Confirm Password
+        p.control.has-icons-left.has-icons-right
+          input.input(type="password" name="password-confirm")
+          span.icon.is-small.is-left
+            i.fa.fa-key
+          span.icon.is-small.is-right
+      .field.is-grouped.is-grouped-centered
+        input.button.is-primary(type="submit" value="Change Password")

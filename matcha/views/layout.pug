@@ -1,0 +1,125 @@
+doctype html
+html
+  head
+    title= `${title} | ${h.siteName}`
+    link(rel='stylesheet' type="text/css" href="/css/inputRange.css")
+    link(rel='stylesheet' type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css")
+    link(rel='stylesheet' type="text/css" href="/css/main.css")
+    link(rel='stylesheet' type="text/css" href="/css/animate.css")
+    script(src="/javascript/jquery-3.2.1.js")
+    script(src="/socket.io/socket.io.js")
+    script(src="/javascript/notify.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js")
+    script(src="/javascript/matcha.js")
+    script(src="/javascript/notifications.js")
+    script(src="/javascript/inputRange.js")
+
+  body
+    .modal
+      .modal-background
+      .modal-content
+      button.modal-close.is-large(aria-label="close")
+
+    block header
+      nav.navbar.is-dark(role="navigation" aria-label="main navigation")
+        .container
+          if currentUser
+            if currentUser.notifications && currentUser.notifications[0]
+              - var count = 0;
+              each notification in currentUser.notifications
+                - if (!notification.seen) {
+                -   count++;
+                - }
+              - if (count) {
+                a#notification.navbar-item.is-flex-touch.notify.show-count(data-count=`${count}`)
+              - } else {
+                a#notification.navbar-item.is-flex-touch
+              - }
+            else
+              a#notification.navbar-item.is-flex-touch
+            #notification-drop.is-hidden
+              .notification-top.is-size-7
+                span Notifications
+                button.button.is-small.is-pulled-right(onclick="notification.deleteAll()") Delete all
+              .notification-content
+                if !currentUser.notifications || !currentUser.notifications[0]
+                  .notification-empty
+                    i.fa.fa-bell.is-size-4
+                    p.is-size-6 Nothing here, area clear!
+                else
+                  .notification-empty.is-hidden
+                    i.fa.fa-bell.is-size-4
+                    p.is-size-6 Nothing here, area clear!
+                if currentUser.notifications && currentUser.notifications[0]
+                  - currentUser.notifications.reverse();
+                  each notification in currentUser.notifications
+                    .notification-block(data-notification-id=`${notification._id}`)
+                      .notification-delete
+                        i.fa.fa-times(onclick=`notification.delete("${notification._id}")`)
+                      .notification-img
+                        figure.image.is-48x48
+                          div.user-img.is-circle(style=`background-image: url(${notification.icon})`)
+                      .notification-info
+                        - const messages = { "visit" : "visited your profile!", "like" : "likes you!", "match" : "likes you! It's a match!", "unlike" : "doesn't like you anymore!", "message" : "sent you a message!" };
+                        span.is-size-7
+                          a.is-bold(href=`${notification.url}`) #{notification.user}
+                          span  #{messages[notification.type]}
+                        .notification-age.is-size-7
+                          i.fa.fa-clock-o
+                          span #{global.timeAgo(notification.date)}
+              .notification-bottom
+                button.button.is-small(onclick="notification.add()") Add
+          .navbar-brand
+            a.navbar-item(href="/") El Matcha
+            .navbar-burger.burger(data-target="navMenu")
+              span
+              span
+              span
+          #navMenu.navbar-menu
+            if currentUser
+              .navbar-start
+                a.navbar-item(href="/chat") Chat
+                a.navbar-item(href="/search") Search
+              .navbar-end
+                .navbar-item.has-dropdown.is-hoverable.is-right
+                  a.navbar-link
+                    if !currentUser.photos || !currentUser.photos[0]
+                      .navbar-img(style="background-image: url(http://bulma.io/images/placeholders/32x32.png)")
+                    else
+                      .navbar-img(style=`background-image: url(/user/${currentUser._id}/${currentUser.photos[0]})`)
+                    span#username #{currentUser.username}
+                  .navbar-dropdown
+                    a.navbar-item(href=`/profile`) My Profile
+                    a.navbar-item(href="/edit/photos") Pictures
+                    a.navbar-item(href="/edit") Settings      
+                    a.navbar-item(href="/logout") Log out
+            else
+              .navbar-end
+                a.navbar-item(href="/login") Log in
+                a.navbar-item(href="/register") Register
+
+    block messages
+      //- pre= h.dump(locals)
+      if locals.flashes
+        - const categories = Object.keys(locals.flashes)
+        each category in categories
+          each message in flashes[category]
+            .column.is-half.is-offset-one-quarter
+              .notification(class=`${category}`)!= message
+                button.delete(aria-label="delete", onClick="this.parentElement.parentElement.remove()")
+
+    block content
+
+    block footer
+      .footer
+        .container
+          .content.has-text-centered
+            p Bulma Matcha by &#x24B8;evlad & &#x24B8;fpipart
+            p 
+              a.
+              a.icon(href="https://github.com/fpipart")
+                i.fa.fa-github
+
+    block scripts

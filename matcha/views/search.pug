@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  .columns
+    .column.is-half.is-offset-one-quarter
+      h1.title.is-3 Pimp your choice
+      form(method="POST")
+        .field
+          label.label Age target
+          .columns.is-centered
+            section.range-slider
+              span.rangeValues
+              input(value=currentUser.search.ageMin min="18" max="100" step="1" type="range")
+              input(value=currentUser.search.ageMax min="18" max="100" step="1" type="range")
+              input#age1(type="text" name="ageMin" value="18" hidden)
+              input#age2(type="text" name="ageMax" value="100" hidden)
+        .field
+          label.label Popularity
+          .columns.is-centered
+            section.range-slider
+              span.rangeValues
+              input(value=currentUser.search.popularityMin min="0" max=maxPopularity step="1" type="range")
+              input(value=currentUser.search.popularityMax min="0" max=maxPopularity step="1" type="range")
+              input#popularity1(type="text" name="popularityMin" value="0" hidden)
+              input#popularity2(type="text" name="popularityMax" value=maxPopularity hidden)
+        .field
+          label.label Length from you (km)
+          .columns.is-centered
+            section.range-length
+              span.rangeLength
+              input(value=currentUser.search.lengthMax min="1" max="500" step="1" type="range")
+              input#lenght(type="text" name="lengthMax" value="500" hidden)
+        .field
+          label.label Sort by
+          .columns.is-centered
+            span.select.is-info
+              select.is-info(name="sort")
+                option(selected= true) -
+                option(selected= currentUser.search.sort == "Age") Age
+                option(selected= currentUser.search.sort == "Tags") Tags
+                option(selected= currentUser.search.sort == "Popularity") Popularity
+                option(selected= currentUser.search.sort == "Nearest") Nearest
+        if tags
+          .field
+            .control
+              each tag in tags
+                input(type="checkbox" name="tags" id=`tag_${tag.name}` value=`#${tag.name}` checked=userTags.includes(tag.name))
+                label(name="tag" for=`tag_${tag.name}`)= `#${tag.name}`
+                | &nbsp;
+        br
+        .field.is-grouped.is-grouped-centered
+          input.button.is-primary(type="submit" value="Search")

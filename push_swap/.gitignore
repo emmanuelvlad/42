@@ -1,0 +1,4 @@
+obj/
+includes/*.h
+checker
+push_swap

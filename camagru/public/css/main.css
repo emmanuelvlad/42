@@ -1,0 +1,163 @@
+
+
+footer {
+  margin-top: 5em;
+}
+
+/*
+** ---------------------------------------------------------------------------
+**                                 NAVBAR
+** ---------------------------------------------------------------------------
+*/
+
+
+
+
+/*
+** ---------------------------------------------------------------------------
+**                                    MISC
+** ---------------------------------------------------------------------------
+*/
+
+.bg-white
+{
+	background-color: #fff;
+	color: #111;
+}
+
+.bg-lightgray
+{
+	background-color: #f4f4f4;
+	color: #111;
+}
+
+.bg-gray
+{
+	background-color: #656565;
+}
+
+.bg-darkgray
+{
+	background-color: #252525;
+}
+
+.bg-turquoise
+{
+	background-color: #55acee;
+}
+
+.bg-blue
+{
+	background-color: #3b5998;
+}
+
+.bg-lightblue
+{
+	background-color: #507299;
+}
+
+.bg-pink
+{
+	background-color: #cd486b;
+}
+
+.bg-green
+{
+	background-color: #298A08;
+}
+
+.bg-green.bg-hover:hover
+{
+	background-color: #257E07;
+}
+
+.bg-orange
+{
+	background-color: #E29E37;
+}
+
+.bg-red
+{
+	background-color: #EB0A0A;
+}
+
+.bg-red.bg-hover:hover
+{
+	background-color: #AF0A0A;
+}
+
+.bg-purple
+{
+	background-color: #6441a4;
+}
+
+.bg-grayish
+{
+	background-color: #2E292B;
+}
+
+.link:hover
+{
+	color: #EB0A0A;
+}
+
+.link.black:hover
+{
+	color: #000;
+}
+
+.hardlink
+{
+	color: #EB0A0A;
+}
+
+.hardlink:hover
+{
+	color: #AF0A0A;
+}
+
+.color-white
+{
+	color: #fff;
+}
+
+.color-red
+{
+	color: #EB0A0A;
+}
+
+.color-green
+{
+	color: #298A08;
+}
+
+.color-darkgray
+{
+	color: #222;
+}
+
+.color-black
+{
+	color: #000;
+}
+
+/*
+** ---------------------------------------------------------------------------
+**                                    MEDIA
+** ---------------------------------------------------------------------------
+*/
+
+@media (min-width: 1200px)
+{
+
+}
+
+@media (min-width: 992px)
+{
+
+}
+
+@media (min-width: 768px)
+{
+
+}

@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	.columns.is-flex.is-centered(style="height: 30rem; flex-flow: wrap")
+		nav.panel.is-7(style="margin: 1rem")
+			p.panel-heading Conversations
+			each user in users
+				if user.photo
+					.column.is-6-mobile.is-4-tablet.is-3-desktop
+					.user-icon
+						a(href=`/chat/${user.username.toLowerCase()}`)
+							.user-hover
+								span.is-size-4 #{user.username}
+							.user-img(style=`background-image: url(/user/${user._id}/${user.photo[0]});`)

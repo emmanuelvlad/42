@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  .columns
+    .column.is-half.is-offset-one-quarter
+      .box
+        article.media
+          .media-content
+            .content
+              p
+                strong #{user.name[1]} #{user.name[2]}
+              p #{user.email}
+              if user.sex
+                p I'm a: #{user.sex}
+              if user.sexWanted
+                p I'm looking for: #{user.sexWanted}
+              if user.bio
+                p Bio:
+                p #{user.bio}
+              - const allTags = []
+              - if (user.tags) {
+              -   allTags[0] = user.tags
+              - }
+              if allTags
+                each tag in allTags
+                  a.button.is-info(href="/")= tag
+                  | &nbsp;

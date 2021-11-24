@@ -1,0 +1,460 @@
+/*
+
+      Multirange
+
+*/
+
+:root {
+  --track-background: pink;
+  --range-color: red;
+}
+
+
+@supports (--css: variables) {
+	input[type="range"] {
+		width:100%;
+		
+	}
+	input[type="range"].multirange {
+		padding: 0;
+		margin: 0;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	input[type="range"].multirange.original {
+		position: absolute;
+	}
+
+		input[type="range"].multirange.original::-webkit-slider-thumb {
+			position: relative;
+			z-index: 2;
+		}
+
+		input[type="range"].multirange.original::-moz-range-thumb {
+			transform: scale(1); /* FF doesn't apply position it seems */
+			z-index: 1;
+		}
+
+		input[type="range"].multirange::-moz-range-track {
+			border-color: transparent; /* needed to switch FF to "styleable" control */
+		}
+
+	input[type="range"].multirange.ghost {
+		position: relative;
+		background: var(--track-background);
+		--track-background: linear-gradient(to right,
+				transparent var(--low), var(--range-color) 0,
+				var(--range-color) calc(var(--high)), transparent 0
+			) no-repeat 0 45% / 100% 40%;
+		--range-color: hsl(190, 80%, 40%);
+	}
+
+		input[type="range"].multirange.ghost::-webkit-slider-runnable-track {
+			background: var(--track-background);
+		}
+
+		input[type="range"].multirange.ghost::-moz-range-track {
+			background: var(--track-background);
+		}
+
+}
+
+/*
+
+		Other
+
+*/
+
+.is-circle {
+    border-radius: 100%;
+}
+
+
+* {
+	-webkit-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+}
+
+.user-icon {
+	position: relative;
+	overflow: hidden;
+	width: 128px;
+	height: 128px;
+	border-radius: 100%;
+	margin: auto;
+	cursor: pointer;
+}
+
+.user-img {
+	width: 100%;
+	height: 100%;
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.user-icon:hover .user-hover {
+	display: flex;
+}
+
+.user-hover {
+	position: absolute;
+	display: none;
+	align-items: center;
+    justify-content: center;
+	z-index: 99;
+	background: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	color: #fff;
+}
+
+.carousel-cell {
+	width: 100%;
+	height: 600px;
+	margin: auto;
+}
+
+.carousel {
+	background: #EEE;
+}
+
+.swiper-container {
+	width: 100%;
+	margin: auto;
+}
+
+.swiper-wrapper {
+	align-items: center;
+    text-align: center;
+}
+
+.swiper-slide img {
+    max-height: 75vh;
+    vertical-align: middle;
+}
+
+#profile-banner {
+	position: relative;
+	overflow: hidden;
+	height: 75vh;
+}
+
+.background-image-blur {
+	background-size: cover;
+	background-position: center center;
+    left:-15px;
+    right:-15px;
+    top:-15px;
+    bottom:-15px;
+    filter: blur(10px) brightness(0.75);
+    -webkit-filter: blur(10px) brightness(0.75);
+    -moz-filter: blur(10px) brightness(0.75);
+    -ms-filter: blur(10px) brightness(0.75);
+    -o-filter: blur(10px) brightness(0.75);
+    position: absolute;
+    z-index: 1;
+}
+
+.btn-container {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    bottom: -4.5em;
+    z-index: 99;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.profile-btn {
+    background-color: #A2A2A2;
+    color: #fff;
+    border-color: transparent;
+    height: 5rem;
+    margin: 0.25em;
+    width: 5rem;
+    border-radius: 100%;
+    font-size: 2.5em;
+    text-shadow: 1px 2px #666;
+    line-height: 2.5em;
+    box-shadow: 2px 4px #666;
+}
+
+.profile-btn:hover, .profile-btn:focus, .profile-btn:active {
+    background-color: #737373;
+    box-shadow: 2px 4px #333;
+    border-color: transparent;
+    color: #fff;
+}
+
+.profile-btn.small {
+    height: 3rem;
+    width: 3rem;
+    font-size: 1.5em;
+    line-height: 1.5rem;
+}
+
+.is-danger.profile-btn, .is-danger.profile-btn:hover, .is-danger.profile-btn:active, .is-danger.profile-btn:focus {
+    box-shadow: 2px 4px #C02A48;
+}
+
+.is-warning.profile-btn, .is-warning.profile-btn:hover, .is-warning.profile-btn:active, .is-warning.profile-btn:focus {
+    box-shadow: 2px 4px #C0A741;
+    color: #fff;
+}
+
+.is-success.profile-btn, .is-success.profile-btn:hover, .is-success.profile-btn:active, .is-success.profile-btn:focus {
+    box-shadow: 2px 4px #1CA64D;
+}
+
+.navbar-img {
+	display: inline-table;
+	width: 36px;
+	height: 36px;
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 100%;
+	margin-right: 10px;
+}
+
+.navbar-brand {
+	position: relative;
+}
+
+#navMenu .navbar-end {
+    margin-right: 48px;
+}
+
+.modal {
+    z-index: 99999;
+}
+
+
+/* Notifications */
+
+#notification {
+    position: absolute;
+	color: #f5f5f5;
+    top: 0;
+    right: 0;
+	height: 52px;
+    align-items: center;
+    z-index: 9999;
+}
+
+#notification:hover {
+	background-color: #292929;
+}
+
+#notification-drop {
+    position: absolute;
+    border: 1px solid #dadada;
+    border-radius: 3px;
+    top: 60px;
+    right: 0;
+    z-index: 9999;
+    width: 325px;
+    color: #111;
+}
+
+#notification-drop::before {
+    position: absolute;
+    top: -5px;
+    right: 18px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #dadada;
+}
+
+.notification-top, .notification-bottom {
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    font-weight: 500;
+}
+
+.notification-top {
+    border-bottom: 1px solid #dadada;
+    line-height: 2em;
+}
+
+.notification-bottom {
+    border-top: 1px solid #dadada;
+}
+
+.notification-content {
+    background-color: #fafafa;    
+}
+
+.notification-empty {
+    color: #555;
+    padding: 40px 0px;
+    text-align: center;
+}
+
+.notification-block {
+    padding: 5px 30px 5px 10px;
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.notification-block:hover {
+    background-color: rgba(100, 100, 255, 0.1);
+}
+
+.notification-block:hover .notification-delete {
+    display: block;
+}
+
+.notification-delete {
+    position: absolute;
+    cursor: pointer;
+    display: none;
+    top: 10px;
+    right: 10px;
+}
+
+.notification-info {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    overflow-wrap: break-word;
+    overflow: hidden;
+}
+
+.notification-age {
+    color: #666;
+}
+
+.notification-age i {
+    margin-right: 0.25rem;
+}
+
+
+@media screen and (max-width: 1023px)
+{
+	#notification {
+		right: 52px;
+    }
+
+    #notification-drop {
+        right: 52px;
+    }
+}
+
+#notification::before {
+    display: block;
+    content: "\f0f3";
+    font-family: "FontAwesome";
+    transform-origin: top center;
+}
+
+#notification::after {
+    font-family: Arial;
+    font-size: 0.60em;
+    font-weight: 700;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 2px 4px;
+    line-height: 100%;
+    border-radius: 10%;
+    background: red;
+    opacity: 0;
+    content: attr(data-count);
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    transition: transform, opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+}
+
+#notification.notify::before {
+    -webkit-animation: ring 1.5s ease;
+    animation: ring 1.5s ease;
+}
+
+#notification.show-count::after {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+
+.chat {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 30rem;
+    width: 100%;
+    border: 1px solid #111;
+    margin-top: 2rem;
+    border-radius: 5px 5px 0 0;
+}
+
+@-webkit-keyframes ring {
+    0% {
+        -webkit-transform: rotate(35deg);
+    }
+    12.5% {
+        -webkit-transform: rotate(-30deg);
+    }
+    25% {
+        -webkit-transform: rotate(25deg);
+    }
+    37.5% {
+        -webkit-transform: rotate(-20deg);
+    }
+    50% {
+        -webkit-transform: rotate(15deg);
+    }
+    62.5% {
+        -webkit-transform: rotate(-10deg);
+    }
+    75% {
+        -webkit-transform: rotate(5deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+@keyframes ring {
+    0% {
+        -webkit-transform: rotate(35deg);
+        transform: rotate(35deg);
+    }
+    12.5% {
+        -webkit-transform: rotate(-30deg);
+        transform: rotate(-30deg);
+    }
+    25% {
+        -webkit-transform: rotate(25deg);
+        transform: rotate(25deg);
+    }
+    37.5% {
+        -webkit-transform: rotate(-20deg);
+        transform: rotate(-20deg);
+    }
+    50% {
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg);
+    }
+    62.5% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+    }
+    75% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
