@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 10:42:31 by evlad             #+#    #+#             */
-/*   Updated: 2016/11/11 16:51:56 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:15:43 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ char	*ft_strtrim(char const *s)
 {
 	int		i;
 	int		j;
-	int		k;
 	char	*copy;
 
-	if (!(s))
+	if (!s)
 		return (NULL);
 	i = 0;
-	k = 0;
 	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
 		i++;
 	j = ft_strlen(s) - 1;
@@ -31,13 +29,9 @@ char	*ft_strtrim(char const *s)
 		j--;
 	if (j <= 0)
 		j = i - 1;
-	if (!(copy = (char*)malloc(sizeof(char) * (j - i + 2))))
+	copy = (char *)malloc(sizeof(char) * (j - i + 2));
+	if (!copy)
 		return (NULL);
-	while (k < j - i + 1)
-	{
-		copy[k] = s[k + i];
-		k++;
-	}
-	copy[k] = '\0';
+	ft_strncpy(copy, s + i, j - i + 1);
 	return (copy);
 }

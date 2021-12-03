@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 18:12:39 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/06 22:46:19 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:57:51 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 intmax_t	signed_cast(va_list args, t_flag *active)
 {
-	intmax_t nb;
+	intmax_t	nb;
 
 	nb = 0;
 	if (active->z)
@@ -34,7 +34,7 @@ intmax_t	signed_cast(va_list args, t_flag *active)
 
 uintmax_t	unsigned_cast(va_list args, t_flag *active)
 {
-	uintmax_t nb;
+	uintmax_t	nb;
 
 	nb = 0;
 	if (active->z)

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 08:33:26 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/11 14:59:37 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:45:32 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		ft_printf(const char *restrict format, ...)
+int	ft_printf(const char *restrict format, ...)
 {
 	int			i;
 	t_length	*len;

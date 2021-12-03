@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: evlad <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: evlad <evlad@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/12 16:35:16 by evlad             #+#    #+#              #
-#    Updated: 2017/04/24 16:47:51 by evlad            ###   ########.fr        #
+#    Updated: 2021/12/03 19:20:16 by evlad            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,7 +106,7 @@ c_red = $$(tput setaf 1)
 OK = "$(c_green)[OK]$(c_reset)"
 
 $(OBJ_PATH)%.o: $(LIBFT_LIST) ./printf.h ./libft.h ./get_next_line.h
-	# @echo -n '	compiling:' $@
+	@echo -e '  compiling: ${@}'
 	@gcc $(FLAGS) -c $(@F:%.o=%.c) -o $@
 
 all: $(LIBFT_NAME)

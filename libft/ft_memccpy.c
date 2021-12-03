@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 17:09:16 by evlad             #+#    #+#             */
-/*   Updated: 2016/11/11 17:47:37 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:46:42 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	unsigned char	*cdst;
 	unsigned char	*csrc;
 
-	cdst = (unsigned char*)dst;
-	csrc = (unsigned char*)src;
+	cdst = (unsigned char *)dst;
+	csrc = (unsigned char *)src;
 	while (n > 0)
 	{
-		if ((*(cdst++) = *(csrc++)) == (unsigned char)c)
+		*(cdst++) = *(csrc++);
+		if (*cdst == (unsigned char)c)
 			return (cdst);
 		n--;
 	}

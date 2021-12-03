@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/03 15:34:55 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/12 16:37:11 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 17:51:32 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 ** --------------------------------------------------------------------------
 */
 
-typedef struct		s_flag
+typedef struct s_flag
 {
 	int				diese;
 	int				zero;
@@ -55,16 +55,16 @@ typedef struct		s_flag
 	wchar_t			*buff;
 }					t_flag;
 
-typedef struct		s_length
+typedef struct s_length
 {
 	int				len;
 }					t_length;
 
-typedef struct		s_conv
+typedef struct s_conv
 {
 	char			*type;
 	void			(*function)(char type, t_flag *active, va_list args,
-						t_length *len);
+			t_length *len);
 }					t_conv;
 
 /*

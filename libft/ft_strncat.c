@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 12:00:34 by evlad             #+#    #+#             */
-/*   Updated: 2016/11/11 13:15:30 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:40:47 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 char	*ft_strncat(char *s1, const char *s2, size_t len)
 {
-	char *cs1;
+	char	*cs1;
 
 	cs1 = s1;
 	while (*s1)
 		s1++;
 	while (len--)
-		if (!(*s1++ = *s2++))
+	{
+		*s1++ = *s2++;
+		if (!(*s1))
 			return (cs1);
+	}
 	*s1 = '\0';
 	return (cs1);
 }

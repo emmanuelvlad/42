@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 12:46:54 by evlad             #+#    #+#             */
-/*   Updated: 2017/03/30 21:35:40 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:38:12 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ char	*ft_strnew(size_t size)
 {
 	char	*retour;
 
-	if (!(retour = (char*)malloc(sizeof(char) * (size + 1))))
+	retour = (char *)malloc(sizeof(char) * (size + 1));
+	if (!retour)
 		return (NULL);
 	ft_bzero(retour, size + 1);
 	return (retour);

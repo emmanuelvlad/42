@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   apply_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 18:34:53 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/12 14:30:28 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:39:04 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ char	*apply_space(char *buffer, t_flag *active)
 
 	if (active->type == 'c' && *buffer == '\0')
 		active->null = 1;
-	if (ft_strchr("sS", active->type) &&
-			(ft_strcmp(buffer, "(null)") == 0 || ft_strcmp(buffer, "") == 0))
+	if (ft_strchr("sS", active->type)
+		&& (ft_strcmp(buffer, "(null)") == 0 || ft_strcmp(buffer, "") == 0))
 		return (buffer);
-	if (active->plus || ft_atoi(buffer) < 0 ||
-			ft_strchr("%cCuZRpoxX", active->type))
+	if (active->plus || ft_atoi(buffer) < 0
+		|| ft_strchr("%cCuZRpoxX", active->type))
 		return (buffer);
 	str = ft_strnew(ft_strlen(buffer) + 1);
 	str[0] = ' ';
@@ -33,8 +33,8 @@ char	*apply_space(char *buffer, t_flag *active)
 
 char	*apply_flags_2(char *buffer, int length, t_flag *active)
 {
-	if (active->precision == 0 && active->diese == 1 &&
-			ft_strchr("oO", active->type) && ft_atoi(buffer) == 0)
+	if (active->precision == 0 && active->diese == 1
+		&& ft_strchr("oO", active->type) && ft_atoi(buffer) == 0)
 	{
 		freemalloc(buffer, active, 0);
 		return ("0");

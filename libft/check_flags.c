@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 15:06:27 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/12 15:15:56 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:57:40 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		check_address(char *buffer)
+int	check_address(char *buffer)
 {
 	while (*buffer)
 	{
@@ -23,7 +23,7 @@ int		check_address(char *buffer)
 	return (1);
 }
 
-int		check_size(t_flag *active)
+int	check_size(t_flag *active)
 {
 	if (active->l)
 		return (1);
@@ -40,9 +40,9 @@ int		check_size(t_flag *active)
 	return (0);
 }
 
-int		check_flags_2(const char *flag, t_flag *active)
+int	check_flags_2(const char *flag, t_flag *active)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (active->width == 0)
@@ -61,7 +61,7 @@ int		check_flags_2(const char *flag, t_flag *active)
 		return (i - 1);
 }
 
-int		check_flags(const char *flag, t_flag *active)
+int	check_flags(const char *flag, t_flag *active)
 {
 	if (flag[0] == '+')
 		active->plus = 1;

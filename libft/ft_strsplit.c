@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 13:28:29 by evlad             #+#    #+#             */
-/*   Updated: 2016/11/30 14:29:46 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:31:19 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ static	char	**process(char **tab, char *s, char c, int i)
 	{
 		if (s[i] != c)
 		{
-			if (!(tab[j++] = (char*)malloc(sizeof(char) *
-							(ft_countsletter(s + i, c) + 1))))
+			tab[j++] = (char *)malloc(sizeof(char)
+					* (ft_countsletter(s + i, c) + 1));
+			if (!tab[j - 1])
 				return (NULL);
 			k = 0;
 			while (s[i])
@@ -41,7 +42,7 @@ static	char	**process(char **tab, char *s, char c, int i)
 	return (tab);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
 	int		i;
@@ -49,7 +50,8 @@ char			**ft_strsplit(char const *s, char c)
 	i = 0;
 	if (!(s))
 		return (NULL);
-	if (!(tab = (char**)malloc(sizeof(char*) * ft_countsword(s, c))))
+	tab = (char **)malloc(sizeof(char *) * ft_countsword(s, c));
+	if (!tab)
 		return (NULL);
-	return (process(tab, (char*)s, c, i));
+	return (process(tab, (char *)s, c, i));
 }

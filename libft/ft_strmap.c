@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 13:22:54 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/06 22:35:09 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:41:35 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	retour = NULL;
 	if ((!(s)) || (!(f)))
 		return (NULL);
-	if (!(retour = (char*)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+	retour = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!retour)
 		return (NULL);
 	while (i != ft_strlen(s))
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 12:06:05 by evlad             #+#    #+#             */
-/*   Updated: 2016/11/11 11:20:38 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:43:48 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ char	*ft_strchr(const char *s, int c)
 			return (NULL);
 		s++;
 	}
-	return (char*)s;
+	return ((char *)s);
 }

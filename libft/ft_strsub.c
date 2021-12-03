@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 13:25:51 by evlad             #+#    #+#             */
-/*   Updated: 2017/03/22 15:45:49 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:21:15 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	if (!(s))
 		return (NULL);
 	i = 0;
-	if ((retour = (char*)malloc(sizeof(char) * (len + 1))) == NULL)
+	retour = (char *)malloc(sizeof(char) * (len + 1));
+	if (!retour)
 		return (NULL);
 	while (i < len)
 	{

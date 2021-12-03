@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_itoa_base_uint.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/27 18:26:07 by evlad             #+#    #+#             */
-/*   Updated: 2017/03/30 21:41:25 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:50:12 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static	int		count(uintmax_t value, int base)
+static int	count(uintmax_t value, int base)
 {
 	int		len;
 
@@ -28,7 +28,7 @@ static	int		count(uintmax_t value, int base)
 	return (len);
 }
 
-char			*ft_itoa_base_uint(uintmax_t value, int base)
+char	*ft_itoa_base_uint(uintmax_t value, int base)
 {
 	static char	rep[] = "0123456789abcdef";
 	char		*str;

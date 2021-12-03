@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 11:31:07 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/20 13:04:38 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 17:59:14 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *big, const char *little);
 char				*ft_strnstr(const char *big, const char *little,
-								size_t len);
+						size_t len);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t len);
 intmax_t			ft_atoi(const char *str);
@@ -57,10 +57,10 @@ void				ft_memdel(void **ap);
 char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);
 void				ft_strclr(char *s);
-void				ft_striter(char *s, void(*f)(char*));
-void				ft_striteri(char *s, void(*f)(unsigned int, char*));
-char				*ft_strmap(char const *s, char(*f)(char));
-char				*ft_strmapi(char const *s, char(*f)(unsigned int, char));
+void				ft_striter(char *s, void (*f)(char*));
+void				ft_striteri(char *s, void (*f)(unsigned int, char*));
+char				*ft_strmap(char const *s, char (*f)(char));
+char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);

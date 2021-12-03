@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 15:43:01 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/11 15:12:07 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 17:51:26 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,19 @@ t_length	*init_length(void)
 {
 	t_length	*length;
 
-	if (!(length = (t_length*)malloc(sizeof(t_length))))
+	length = (t_length *)malloc(sizeof(t_length));
+	if (!length)
 		return (NULL);
 	length->len = 0;
 	return (length);
 }
 
-t_flag		*init_flag(void)
+t_flag	*init_flag(void)
 {
 	t_flag	*flag;
 
-	if (!(flag = (t_flag*)malloc(sizeof(t_flag))))
+	flag = (t_flag *)malloc(sizeof(t_flag));
+	if (!flag)
 		return (NULL);
 	flag->diese = 0;
 	flag->zero = 0;

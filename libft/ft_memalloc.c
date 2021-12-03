@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 11:24:51 by evlad             #+#    #+#             */
-/*   Updated: 2016/11/11 10:38:34 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:49:45 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	*ft_memalloc(size_t size)
 {
 	void	*retour;
 
-	if (!(retour = (void*)malloc(size)))
+	retour = (void *)malloc(size);
+	if (!retour)
 		return (NULL);
 	ft_memset(retour, 0, size);
 	return (retour);

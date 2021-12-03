@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conv_2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 17:09:34 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/12 15:02:45 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:56:51 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	conv_ws(char type, t_flag *active, va_list args, t_length *len)
 	char	*tmp;
 	int		i;
 
-	wstr = va_arg(args, wchar_t*);
+	wstr = va_arg(args, wchar_t *);
 	active->buff = wstr;
 	str = NULL;
 	active->type = type;
@@ -88,7 +88,7 @@ void	conv_p(char type, t_flag *active, va_list args, t_length *len)
 	char		*address;
 	char		*str;
 
-	ptr = va_arg(args, void*);
+	ptr = va_arg(args, void *);
 	ptrint = (uintptr_t)ptr;
 	address = ft_itoa_base_uint(ptrint, 16);
 	str = ft_strnew(ft_strlen(address) + 2);

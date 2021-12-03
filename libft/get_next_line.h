@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 15:41:33 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/18 15:31:08 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 17:51:16 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 # include "libft.h"
 
-typedef struct	s_struct
+typedef struct s_struct
 {
 	char		buffer[BUFF_SIZE + 1];
 	int			ret;

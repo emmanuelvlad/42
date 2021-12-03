@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   conv_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 17:09:28 by evlad             #+#    #+#             */
-/*   Updated: 2017/04/12 14:58:35 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 18:56:16 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	conv(char type, t_flag *active, va_list args, t_length *len)
 {
 	int					i;
 	static const t_conv	g_conv[] = {
-		{ "bdiouxX", &conv_int },
-		{ "DOU", &conv_dou },
-		{ "Cc", &conv_c },
-		{ "s", &conv_s },
-		{ "S", &conv_ws },
-		{ "p", &conv_p },
-		{ "%ZR", &conv_pct }
+	{"bdiouxX", &conv_int},
+	{"DOU", &conv_dou},
+	{"Cc", &conv_c},
+	{"s", &conv_s},
+	{"S", &conv_ws},
+	{"p", &conv_p},
+	{"%ZR", &conv_pct}
 	};
 
 	i = 0;
@@ -63,7 +63,7 @@ char	*other_int(va_list args, t_flag *active)
 	else if (active->type == 'X')
 	{
 		return (ft_strtoupper(
-					ft_itoa_base_uint(va_arg(args, unsigned int), 16)));
+				ft_itoa_base_uint(va_arg(args, unsigned int), 16)));
 	}
 	return (ft_itoa_base(va_arg(args, int), 10));
 }
@@ -101,7 +101,7 @@ void	conv_s(char type, t_flag *active, va_list args, t_length *len)
 	int		length;
 
 	if (!active->l)
-		str = va_arg(args, char*);
+		str = va_arg(args, char *);
 	else
 		return (conv_ws(type, active, args, len));
 	if (str == NULL)

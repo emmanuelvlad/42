@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: evlad <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: evlad <evlad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/04 15:41:00 by evlad             #+#    #+#             */
-/*   Updated: 2016/12/15 12:26:27 by evlad            ###   ########.fr       */
+/*   Updated: 2021/12/03 17:51:13 by evlad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		readit(int fd, char **line, t_struct *data)
+int	readit(int fd, char **line, t_struct *data)
 {
 	data->ret = read(fd, data->buffer, BUFF_SIZE);
 	if (data->ret == 0 && !ft_strchr(data->tmp, '\n'))
@@ -29,7 +29,7 @@ int		readit(int fd, char **line, t_struct *data)
 	return (1);
 }
 
-int		get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
 	t_struct	data;
 	static char	*str = NULL;
